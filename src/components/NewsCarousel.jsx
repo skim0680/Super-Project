@@ -6,10 +6,10 @@ import "slick-carousel/slick/slick-theme.css"
 export default function NewsCarousel() {
     const [articles, setArticles] = useState([
         {
-            title: "Endangered Species Recovery Brings Hope",
+            title: "The Rhinoceros, Under Siege but Not Lost",
             image: "/news/recovery.jpg",
-            description: "Recent conservation efforts show promising results for endangered species.",
-            link: "#"
+            description: "For millennia, the rhinoceros stood as one of Earth’s great survivors, armored and immense, its bulk anchoring the landscapes of Africa and Asia. Today, it’s perilously close to vanishing.",
+            link: "https://news.mongabay.com/short-article/2025/09/the-rhinoceros-under-siege-but-not-lost/"
         },
         {
             title: "Climate Change Impact on Wildlife",
