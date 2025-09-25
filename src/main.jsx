@@ -24,17 +24,17 @@ function App() {
           <Route 
             path="/play" 
             element={
-              <ProtectedRoute>
+              //<ProtectedRoute>
                 <Play />
-              </ProtectedRoute>
+              //</ProtectedRoute>
             } 
           />
           <Route 
             path="/collection" 
             element={
-              <ProtectedRoute>
+              //<ProtectedRoute>
                 <Collection />
-              </ProtectedRoute>
+              //</ProtectedRoute>
             } 
           />
         </Routes>
