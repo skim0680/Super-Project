@@ -12,10 +12,10 @@ export default function NewsCarousel() {
             link: "https://news.mongabay.com/short-article/2025/09/the-rhinoceros-under-siege-but-not-lost/"
         },
         {
-            title: "Climate Change Impact on Wildlife",
-            image: "/news/climate.jpg",
-            description: "How changing climate patterns affect endangered species populations.",
-            link: "#"
+            title: "Orangutans in Sumatra learn to live in the wild",
+            image: "/animals/orangutan.jpg",
+            description: "Orangutans spend roughly 90% of their time in the tree canopy; it isn’t normal for Willy to want to spend much time on the ground. Willy is a student, so to speak. She’s learning how to be wild.",
+            link: "https://www.worldwildlife.org/stories/orangutans-in-sumatra-learn-to-live-in-the-wild"
         },
         {
             title: "Community Conservation Success",
@@ -43,6 +43,7 @@ export default function NewsCarousel() {
                     <div key={index} className="carousel-slide">
                         <div className="slide-content">
                             <h2>{article.title}</h2>
+                            <img src={article.image} alt={article.title} />
                             <p>{article.description}</p>
                             <a href={article.link} className="read-more">Read More →</a>
                         </div>

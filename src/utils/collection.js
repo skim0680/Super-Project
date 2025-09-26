@@ -2,10 +2,10 @@
 export const ANIMALS = [
     {
         id: 1,
-        name: "Black Rhino",
-        image: "/animals/rhino.jpg",
-        description: "The black rhinoceros is a species of rhinoceros native to eastern and southern Africa.",
-        status: "Critically Endangered"
+        name: "Red Panda",
+        image: "/animals/redPanda.jpg",
+        description: "The red panda is a small mammal native to the eastern Himalayas and southwestern China.",
+        status: "Endangered"
     },
     {
         id: 2,

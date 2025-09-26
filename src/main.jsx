@@ -8,8 +8,6 @@ import Home from "./pages/home"
 import About from "./pages/About"
 import Collection from "./pages/Collection"
 import Help from "./pages/How to Help"
-import SignIn from "./pages/SignIn"
-import ProtectedRoute from "./components/ProtectedRoute"
 
 function App() {
   return (
@@ -18,25 +16,10 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
           <Route path="/about" element={<About />} />
           <Route path="/help" element={<Help />} />
-          <Route 
-            path="/play" 
-            element={
-              //<ProtectedRoute>
-                <Play />
-              //</ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/collection" 
-            element={
-              //<ProtectedRoute>
-                <Collection />
-              //</ProtectedRoute>
-            } 
-          />
+          <Route path="/play" element={<Play />} />
+          <Route path="/collection" element={<Collection />} />
         </Routes>
       </div>
     </BrowserRouter>
