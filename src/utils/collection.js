@@ -5,15 +5,50 @@ export const ANIMALS = [
         name: "Red Panda",
         image: "/animals/redPanda.jpg",
         description: "The red panda is a small mammal native to the eastern Himalayas and southwestern China.",
+        reason: "Habitat loss and poaching",
+        funFact: "Red pandas use their bushy tails for balance and warmth.",
         status: "Endangered"
     },
     {
         id: 2,
-        name: "Mountain Gorilla",
-        image: "/animals/gorilla.jpg",
-        description: "The mountain gorilla is one of the two subspecies of the eastern gorilla.",
+        name: "Orangutan",
+        image: "/animals/orangutan.jpg",
+        description: "The orangutan is a large primate found in the rainforests of Indonesia and Malaysia.",
+        reason: "Deforestation and illegal pet trade",
+        funFact: "Orangutans are highly intelligent and use tools to obtain food.",
+        status: "Critically Endangered"
+    },
+    {
+        id: 3,
+        name: "Black Rhinoceros",
+        image: "/animals/rhino.webp",
+        description: "The black rhinoceros is a species of rhinoceros native to eastern and southern Africa.",
+        reason: "Poaching for their horns",
+        funFact: "Rhinos have poor eyesight but a strong sense of smell and hearing.",
+        status: "Critically Endangered"
+    },
+    {
+        id: 4,
+        name: "African Penguin",
+        image: "/animals/penguin.jpg",
+        description: "The African penguin is a species of penguin found on the southwestern coast of Africa.",
+        reason: "Oil spills and overfishing",
+        funFact: "African penguins are also known as 'jackass penguins' because of their donkey-like bray.",
         status: "Endangered"
     },
+    {
+        id: 5,
+        name: "Argentine Angelshark",
+        image: "/animals/shark.jpg",
+        description: "The Argentine angelshark is a species of angelshark found off the coast of Argentina.",
+        reason: "Bycatch and habitat degradation",
+        funFact: "Angelsharks can camouflage themselves on the ocean floor to ambush prey.",
+        status: "Endangered"
+    },
+    {
+        id: 6,
+        name: "",
+    }
     // Add more animals here
 ]
 

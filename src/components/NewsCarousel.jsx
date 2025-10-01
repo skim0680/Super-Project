@@ -7,7 +7,7 @@ export default function NewsCarousel() {
     const [articles, setArticles] = useState([
         {
             title: "The Rhinoceros, Under Siege but Not Lost",
-            image: "/news/recovery.jpg",
+            image: "/animals/rhino.webp",
             description: "For millennia, the rhinoceros stood as one of Earth’s great survivors, armored and immense, its bulk anchoring the landscapes of Africa and Asia. Today, it’s perilously close to vanishing.",
             link: "https://news.mongabay.com/short-article/2025/09/the-rhinoceros-under-siege-but-not-lost/"
         },
@@ -18,10 +18,10 @@ export default function NewsCarousel() {
             link: "https://www.worldwildlife.org/stories/orangutans-in-sumatra-learn-to-live-in-the-wild"
         },
         {
-            title: "Community Conservation Success",
-            image: "/news/community.jpg",
-            description: "Local communities make significant impact in wildlife preservation.",
-            link: "#"
+            title: "Twelve whales have been tangled in shark nets off Queensland’s coast so far this year. Here’s why",
+            image: "/animals/whale.avif",
+            description: "In the worst case, entanglements could cause drowning, one expert says, but whales can also suffer long-term effects from the nets.",
+            link: "https://www.theguardian.com/environment/2025/sep/30/whales-tangled-shark-nets-queensland-coast"
         }
     ])
 
