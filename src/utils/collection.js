@@ -4,10 +4,47 @@ export const ANIMALS = [
         id: 1,
         name: "Red Panda",
         image: "/animals/redPanda.jpg",
+        // Example: list of images to use as card faces for this animal.
+        // Only include image files that exist in public/animals/.
+        // For testing there are two available files: redPanda.jpg and redPanda-1.jpg
+        images: [
+            '/animals/redPanda-1.jpg',
+            '/animals/redPanda-2.jpg',
+            '/animals/redPanda-3.jpg',
+            '/animals/redPanda-4.jpg',
+            '/animals/redPanda-5.jpg',
+            '/animals/redPanda-6.jpg'
+        ],
+        // Optional per-animal card back artwork
+        backImage: '/animals/cardback.jpg',
         description: "The red panda is a small mammal native to the eastern Himalayas and southwestern China.",
         reason: "Habitat loss and poaching",
         funFact: "Red pandas use their bushy tails for balance and warmth.",
-        status: "Endangered"
+        status: "Endangered",
+        // Example sentence-style fill-in-the-blank questions for this animal
+        questions: [
+            {
+                key: 'range',
+                before: 'The red panda is native to',
+                after: '.',
+                options: ['the eastern Himalayas and SW China', 'South America', 'Australia', 'Madagascar'],
+                answer: 'the eastern Himalayas and SW China'
+            },
+            {
+                key: 'diet',
+                before: 'Its diet mainly includes',
+                after: '.',
+                options: ['bamboo and shoots', 'fish', 'insects only', 'fruit exclusively'],
+                answer: 'bamboo and shoots'
+            },
+            {
+                key: 'status',
+                before: 'Conservation status:',
+                after: '',
+                options: ['Endangered', 'Least Concern', 'Vulnerable', 'Extinct'],
+                answer: 'Endangered'
+            }
+        ]
     },
     {
         id: 2,
@@ -47,7 +84,12 @@ export const ANIMALS = [
     },
     {
         id: 6,
-        name: "",
+        name: "Amur Leopard",
+        image: "/animals/leopard.jpg",
+        description: "The Amur leopard is a subspecies of leopard found in the Russian Far East and northeastern China.",
+        reason: "Poaching and habitat loss",
+        funFact: "Amur leopards have the thickest fur of any leopard subspecies to survive cold climates.",
+        status: "Critically Endangered"
     }
     // Add more animals here
 ]

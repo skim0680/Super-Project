@@ -7,6 +7,7 @@ import Play from "./pages/Play"
 import Home from "./pages/home"
 import About from "./pages/About"
 import Collection from "./pages/Collection"
+import AnimalPage from "./pages/AnimalPage"
 import Help from "./pages/How to Help"
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/help" element={<Help />} />
           <Route path="/play" element={<Play />} />
+          <Route path="/animal/:id" element={<AnimalPage />} />
           <Route path="/collection" element={<Collection />} />
         </Routes>
       </div>
