@@ -10,7 +10,10 @@ export default function Collection() {
         // Load collected animals from localStorage
         const collectedIds = JSON.parse(localStorage.getItem('collectedAnimals') || '[]');
         // Get full animal details for each collected ID
-        const collectedAnimals = ANIMALS.filter(animal => collectedIds.includes(animal.id));
+        const collectedAnimals = ANIMALS.filter(animal => 
+            collectedIds.includes(animal.id.toString()) || // Check string version of ID
+            collectedIds.includes(animal.id) // Check number version of ID
+        );
         setCollection(collectedAnimals);
     }, []);
 
@@ -31,7 +34,7 @@ export default function Collection() {
                          className="collection-card" 
                          onClick={() => setSelectedAnimal(animal)}
                     >
-                        <img src={`/animals/${animal.id}.jpg`} alt={animal.name} />
+                        <img src={animal.image} alt={animal.name} />
                         <div className="collection-card-content">
                             <h3>{animal.name}</h3>
                             <p>Click to learn more</p>
@@ -43,11 +46,28 @@ export default function Collection() {
             {selectedAnimal && (
                 <>
                     <div className="popup-overlay" onClick={() => setSelectedAnimal(null)} />
-                    <div className="collection-popup">
+                    <div className="collection-popup detailed">
+                        <button className="close-button" onClick={() => setSelectedAnimal(null)}>✕</button>
                         <h2>{selectedAnimal.name}</h2>
-                        <img src={`/animals/${selectedAnimal.id}.jpg`} alt={selectedAnimal.name} />
-                        <p>{selectedAnimal.description || 'No description available.'}</p>
-                        <button onClick={() => setSelectedAnimal(null)}>Close</button>
+                        <img src={selectedAnimal.image} alt={selectedAnimal.name} />
+                        <div className="animal-details">
+                            <div className="detail-section">
+                                <h3>About</h3>
+                                <p>{selectedAnimal.description}</p>
+                            </div>
+                            <div className="detail-section">
+                                <h3>Conservation Status</h3>
+                                <p className={`status status-${selectedAnimal.status.toLowerCase()}`}>
+                                    {selectedAnimal.status}
+                                </p>
+                                <h3>Threats</h3>
+                                <p>{selectedAnimal.reason}</p>
+                            </div>
+                            <div className="detail-section">
+                                <h3>Fun Fact</h3>
+                                <p>{selectedAnimal.funFact}</p>
+                            </div>
+                        </div>
                     </div>
                 </>
             )}

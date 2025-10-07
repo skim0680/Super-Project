@@ -1,8 +1,8 @@
 // Card component removed — stub to satisfy any imports.
 import PropTypes from 'prop-types';
 
-export default function Card({ isFlipped, frontImage, onClick, isMatched }) {
-  const cardBackImage = '/animals/cardback.jpg';
+export default function Card({ isFlipped, frontImage, onClick, isMatched, animalName, backImage }) {
+  const cardBackImage = backImage || '/animals/cardback.jpg';
 
   return (
     <div 
@@ -13,7 +13,7 @@ export default function Card({ isFlipped, frontImage, onClick, isMatched }) {
         <div className="card-front">
           <img 
             src={frontImage} 
-            alt="Red Panda card" 
+            alt={`${animalName} card`}
             onError={(e) => {
               console.error(`Failed to load image: ${frontImage}`);
               e.target.src = cardBackImage;
@@ -32,5 +32,7 @@ Card.propTypes = {
   isFlipped: PropTypes.bool.isRequired,
   frontImage: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  isMatched: PropTypes.bool.isRequired
+  isMatched: PropTypes.bool.isRequired,
+  animalName: PropTypes.string.isRequired,
+  backImage: PropTypes.string
 };

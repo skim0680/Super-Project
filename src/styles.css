@@ -437,10 +437,11 @@ body {
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
+  z-index: 1001;
+  max-width: 90vw;
+  width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .popup-overlay {
@@ -449,37 +450,122 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.collection-popup.detailed {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.collection-popup .close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  color: #4a6e4d;
+}
+
+.collection-popup .close-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .collection-popup h2 {
   color: #4a6e4d;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  margin-right: 2rem;
 }
 
 .collection-popup img {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 300px;
   object-fit: cover;
-  border-radius: 75px;
-  margin: 1rem auto;
-  display: block;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
 }
 
-.collection-popup button {
-  background: #8bb58e;
+.animal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detail-section {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.detail-section h3 {
+  color: #8bb58e;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.detail-section p {
+  margin: 0;
+  line-height: 1.6;
+  color: #635241;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0.5rem 0 1rem;
+}
+
+.status-endangered {
+  background-color: #ff6b6b;
   color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: background-color 0.3s ease;
 }
 
-.collection-popup button:hover {
-  background: #77ac7c;
+.status-vulnerable {
+  background-color: #ffd93d;
+  color: #635241;
+}
+
+.status-critically-endangered {
+  background-color: #c92a2a;
+  color: white;
+}
+
+.status-near-threatened {
+  background-color: #ffa94d;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .collection-popup {
+    width: 95vw;
+    padding: 1rem;
+  }
+
+  .collection-popup img {
+    height: 200px;
+  }
+
+  .collection-popup h2 {
+    font-size: 1.5rem;
+  }
 }
 
 /* Quiz styles */

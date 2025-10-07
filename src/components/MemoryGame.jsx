@@ -114,6 +114,8 @@ export default function MemoryGame({ animal, onWin }) {
             isMatched={card.isMatched}
             frontImage={card.image}
             onClick={() => handleCardClick(index)}
+            animalName={animal.name}
+            backImage={animal.backImage}
           />
         ))}
       </div>
@@ -123,8 +125,10 @@ export default function MemoryGame({ animal, onWin }) {
 
 MemoryGame.propTypes = {
   animal: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    backImage: PropTypes.string,
   }).isRequired,
   onWin: PropTypes.func.isRequired,
 };

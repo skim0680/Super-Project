@@ -7,24 +7,51 @@ export default function Quiz({ animal }) {
   const [userAnswers, setUserAnswers] = useState({});
   const [showCollected, setShowCollected] = useState(false);
 
+  // Function to shuffle array
+  function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
   // Quiz paragraph with blanks to fill
   const quizContent = {
-    text: `The ${animal.name} is a fascinating animal that lives in _HABITAT_. 
-           These amazing creatures are currently threatened by _THREAT_, 
-           which is a serious concern for their survival. 
+    text: `The ${animal.name} is a fascinating animal. ${animal.description.split('.')[0]}. 
+           These amazing creatures are currently threatened by _REASON_, 
+           which is a serious concern for their survival. They are currently listed as _STATUS_. 
            Here's an interesting fact: _FACT_!`,
     blanks: {
-      HABITAT: {
-        options: ['the eastern Himalayas', 'the African savanna', 'the Amazon rainforest', 'the Arctic tundra'],
-        answer: animal.habitat || 'the eastern Himalayas'
+      REASON: {
+        options: shuffleArray([
+          "Red Panda".reason,
+          "Orangutan".reason,
+          "Black Rhinoceros".reason,
+          "African Penguin".reason,
+          "Argentine Angelshark".reason,
+          "Amur Leopard".reason
+        ].filter(Boolean)),
+        answer: animal.reason
       },
-      THREAT: {
-        options: ['habitat loss', 'climate change', 'predation', 'disease'],
-        answer: animal.threat || 'habitat loss'
+      STATUS: {
+        options: shuffleArray([
+          animal.status,
+          'Vulnerable',
+          'Critically Endangered',
+          'Near Threatened'
+        ].filter(Boolean)),
+        answer: animal.status
       },
       FACT: {
-        options: ['they spend most of their time in trees', 'they can swim underwater', 'they glow in the dark', 'they hibernate in winter'],
-        answer: animal.fact || 'they spend most of their time in trees'
+        options: shuffleArray([
+          animal.fact,
+          'they are excellent swimmers',
+          'they can camouflage their skin',
+          'they communicate through ultrasonic sounds'
+        ].filter(Boolean)),
+        answer: animal.fact
       }
     }
   };
@@ -43,8 +70,9 @@ export default function Quiz({ animal }) {
       setShowCollected(true);
       // Save to collection
       const collectedAnimals = JSON.parse(localStorage.getItem('collectedAnimals') || '[]');
-      if (!collectedAnimals.includes(animal.id)) {
-        collectedAnimals.push(animal.id);
+      const animalId = animal.id.toString(); // Convert ID to string for consistent storage
+      if (!collectedAnimals.includes(animalId)) {
+        collectedAnimals.push(animalId);
         localStorage.setItem('collectedAnimals', JSON.stringify(collectedAnimals));
       }
       // After showing collection popup, navigate to collection page
@@ -99,7 +127,7 @@ export default function Quiz({ animal }) {
           <div className="popup-overlay" />
           <div className="collection-popup">
             <h2>Congratulations!</h2>
-            <img src={`/animals/${animal.id}.jpg`} alt={animal.name} />
+                        <img src={animal.image} alt={animal.name} />
             <p>You've collected the {animal.name}!</p>
           </div>
         </>
@@ -110,10 +138,12 @@ export default function Quiz({ animal }) {
 
 Quiz.propTypes = {
   animal: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    habitat: PropTypes.string,
-    threat: PropTypes.string,
-    fact: PropTypes.string,
+    description: PropTypes.string.isRequired,
+    reason: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    funFact: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
   }).isRequired,
 };
