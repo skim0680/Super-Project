@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { ANIMALS } from '../utils/collection';
 
 export default function Quiz({ animal }) {
   const navigate = useNavigate();
   const [userAnswers, setUserAnswers] = useState({});
   const [showCollected, setShowCollected] = useState(false);
+  const [checkedAnswers, setCheckedAnswers] = useState({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   // Function to shuffle array
   function shuffleArray(array) {
@@ -26,32 +29,24 @@ export default function Quiz({ animal }) {
     blanks: {
       REASON: {
         options: shuffleArray([
-          "Red Panda".reason,
-          "Orangutan".reason,
-          "Black Rhinoceros".reason,
-          "African Penguin".reason,
-          "Argentine Angelshark".reason,
-          "Amur Leopard".reason
-        ].filter(Boolean)),
+          animal.reason,
+          ...animal.quiz.reasons
+        ]),
         answer: animal.reason
       },
       STATUS: {
         options: shuffleArray([
           animal.status,
-          'Vulnerable',
-          'Critically Endangered',
-          'Near Threatened'
-        ].filter(Boolean)),
+          ...animal.quiz.statuses
+        ]),
         answer: animal.status
       },
       FACT: {
         options: shuffleArray([
-          animal.fact,
-          'they are excellent swimmers',
-          'they can camouflage their skin',
-          'they communicate through ultrasonic sounds'
-        ].filter(Boolean)),
-        answer: animal.fact
+          animal.funFact,
+          ...animal.quiz.facts
+        ]),
+        answer: animal.funFact
       }
     }
   };
@@ -62,15 +57,22 @@ export default function Quiz({ animal }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const allCorrect = Object.entries(quizContent.blanks).every(
-      ([blank, { answer }]) => userAnswers[blank] === answer
-    );
+    setHasSubmitted(true);
+    
+    // Check each answer and update the checkedAnswers state
+    const newCheckedAnswers = {};
+    Object.entries(quizContent.blanks).forEach(([blank, { answer }]) => {
+      newCheckedAnswers[blank] = userAnswers[blank] === answer;
+    });
+    setCheckedAnswers(newCheckedAnswers);
+    
+    const allCorrect = Object.values(newCheckedAnswers).every(isCorrect => isCorrect);
 
     if (allCorrect) {
       setShowCollected(true);
       // Save to collection
       const collectedAnimals = JSON.parse(localStorage.getItem('collectedAnimals') || '[]');
-      const animalId = animal.id.toString(); // Convert ID to string for consistent storage
+      const animalId = animal.id.toString();
       if (!collectedAnimals.includes(animalId)) {
         collectedAnimals.push(animalId);
         localStorage.setItem('collectedAnimals', JSON.stringify(collectedAnimals));
@@ -87,13 +89,22 @@ export default function Quiz({ animal }) {
   const textSegments = quizContent.text.split(/(_[A-Z]+_)/).map((segment, index) => {
     if (segment.match(/_([A-Z]+)_/)) {
       const blank = segment.replace(/_/g, '');
-      const { options } = quizContent.blanks[blank];
+      const { options, answer } = quizContent.blanks[blank];
+      const isCorrect = checkedAnswers[blank];
+      const isChecked = hasSubmitted && checkedAnswers.hasOwnProperty(blank);
+      
+      let selectClassName = 'quiz-select';
+      if (isChecked) {
+        selectClassName += isCorrect ? ' correct' : ' incorrect';
+      }
+
       return (
         <select
           key={index}
           value={userAnswers[blank] || ''}
           onChange={(e) => handleChange(blank, e.target.value)}
-          className="quiz-select"
+          className={selectClassName}
+          disabled={isChecked && isCorrect}
         >
           <option value="">Select...</option>
           {options.map((option, i) => (
@@ -145,5 +156,10 @@ Quiz.propTypes = {
     status: PropTypes.string.isRequired,
     funFact: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
+    quiz: PropTypes.shape({
+      reasons: PropTypes.arrayOf(PropTypes.string).isRequired,
+      facts: PropTypes.arrayOf(PropTypes.string).isRequired,
+      statuses: PropTypes.arrayOf(PropTypes.string).isRequired
+    }).isRequired
   }).isRequired,
 };

@@ -10,7 +10,6 @@ export default function Navbar() {
                 <CustomLink to="/play">Play</CustomLink>
                 <CustomLink to="/collection">Collection</CustomLink>
                 <CustomLink to="/help">Help</CustomLink>
-                <CustomLink to="/about">About</CustomLink>
             </ul>
         </nav>
     )
