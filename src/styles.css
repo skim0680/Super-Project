@@ -3,9 +3,10 @@
 }
 
 body {
-    margin: 0;
-    color: rgb(99, 82, 65);
-    font-family: 'League Spartan', sans-serif;
+  margin: 0;
+  /* slightly cooler/desaturated brown that pairs well with the greens */
+  color: #5b4b3c;
+  font-family: 'League Spartan', sans-serif;
 }
 
 .container {
@@ -70,6 +71,10 @@ body {
     background-color: #f5f7f5;
     border-radius: 15px;
     margin-bottom: 3rem;
+}
+
+.help-page {
+  padding-bottom: 4rem; /* more space at bottom of help page */
 }
 
 .hero h1 {
@@ -522,7 +527,7 @@ body {
 .detail-section p {
   margin: 0;
   line-height: 1.6;
-  color: #635241;
+  color: #5b4b3c;
 }
 
 .status {

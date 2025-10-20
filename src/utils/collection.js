@@ -39,6 +39,14 @@ export const ANIMALS = [
         id: 2,
         name: "Orangutan",
         image: "/animals/orangutan.jpg",
+        images: [
+            '/animals/orangutan-1.jpg',
+            '/animals/orangutan-2.jpg',
+            '/animals/orangutan-3.jpg',
+            '/animals/orangutan-4.jpg',
+            '/animals/orangutan-5.jpg',
+            '/animals/redPanda-5.jpg'
+        ],
         description: "The orangutan is a large primate found in the rainforests of Indonesia and Malaysia.",
         reason: "deforestation and illegal pet trade",
         funFact: "they are highly intelligent and use tools to obtain food.",
@@ -65,6 +73,10 @@ export const ANIMALS = [
         id: 3,
         name: "Black Rhinoceros",
         image: "/animals/rhino.webp",
+        images: [
+            
+        ],
+            
         description: "The black rhinoceros is a species of rhinoceros native to eastern and southern Africa.",
         reason: "poaching for their horns",
         funFact: "they have poor eyesight but a strong sense of smell and hearing.",

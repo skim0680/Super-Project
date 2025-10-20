@@ -10,24 +10,39 @@ export default function Play() {
   const [startBlockedMessage, setStartBlockedMessage] = useState('');
 
   function startPlay() {
-    // Use Red Panda for testing
-    const redPanda = ANIMALS.find(animal => animal.name === "Red Panda");
-    if (!redPanda) return;
+    // Build list of eligible animals: at least 6 images and not already collected
+    // Merge both possible storage keys so we don't miss previously stored values
+    const collectedA = JSON.parse(localStorage.getItem('collectedAnimals') || '[]');
+    const collectedB = JSON.parse(localStorage.getItem('animalCollection') || '[]');
+    console.log('collectedAnimals:', collectedA, 'animalCollection:', collectedB);
+    const collectedSet = new Set([...
+      (Array.isArray(collectedA) ? collectedA.map(String) : []),
+      (Array.isArray(collectedB) ? collectedB.map(String) : [])
+    ].flat());
 
-    const collected = JSON.parse(localStorage.getItem('collectedAnimals') || '[]');
-    const strIds = collected.map(String);
-    const isCollected = strIds.includes(String(redPanda.id));
+    const eligible = ANIMALS.filter(animal => {
+      // defensive checks
+      if (!animal) return false;
+      if (!Array.isArray(animal.images)) return false;
+      if (animal.images.length < 6) return false;
+      if (collectedSet.has(String(animal.id))) return false;
+      return true;
+    });
 
-    if (isCollected) {
-      setStartBlockedMessage(`You already collected ${redPanda.name}. Check your collection to learn more.`);
+    if (eligible.length === 0) {
+      console.log('Eligible animals:', eligible);
+      setStartBlockedMessage('No eligible animals are available to play — either none have enough images or you have already collected them. Check your collection or add more animals.');
       setSelectedAnimal(null);
       setGameStarted(false);
       setShowQuiz(false);
       return;
     }
 
+  console.log('Eligible for play:', eligible.map(a => a.name));
+  // Pick a random eligible animal
+    const picked = eligible[Math.floor(Math.random() * eligible.length)];
     setStartBlockedMessage('');
-    setSelectedAnimal(redPanda);
+    setSelectedAnimal(picked);
     setGameStarted(true);
     setShowQuiz(false);
   }

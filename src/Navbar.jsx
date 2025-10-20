@@ -9,6 +9,7 @@ export default function Navbar() {
             <ul>
                 <CustomLink to="/play">Play</CustomLink>
                 <CustomLink to="/collection">Collection</CustomLink>
+                <CustomLink to="/about">About</CustomLink>
                 <CustomLink to="/help">Help</CustomLink>
             </ul>
         </nav>
