@@ -8,6 +8,7 @@ import Home from "./pages/home"
 import Collection from "./pages/Collection"
 import AnimalPage from "./pages/AnimalPage"
 import Help from "./pages/How to Help"
+import About from "./pages/About"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/help" element={<Help />} />
           <Route path="/play" element={<Play />} />
           <Route path="/animal/:id" element={<AnimalPage />} />

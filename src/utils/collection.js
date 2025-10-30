@@ -17,6 +17,7 @@ export const ANIMALS = [
         reason: "habitat loss and poaching",
         funFact: "they use their bushy tails for balance and warmth.",
         status: "Endangered",
+        youtubeId: "ERwHvwsGFoE",
         quiz: {
             reasons: [
                 "competition from invasive species",
@@ -51,6 +52,7 @@ export const ANIMALS = [
         reason: "deforestation and illegal pet trade",
         funFact: "they are highly intelligent and use tools to obtain food.",
         status: "Critically Endangered",
+        youtubeId: "od_PmtmMDV0",
         quiz: {
             reasons: [
                 "competition with local farmers",
@@ -74,7 +76,12 @@ export const ANIMALS = [
         name: "Black Rhinoceros",
         image: "/animals/rhino.webp",
         images: [
-            
+            '/animals/rhino-1.jpg',
+            '/animals/rhino-2.jpg',
+            '/animals/rhino-3.jpg',
+            '/animals/rhino-4.jpg',
+            '/animals/rhino-5.jpg',
+            '/animals/redPanda-5.jpg'
         ],
             
         description: "The black rhinoceros is a species of rhinoceros native to eastern and southern Africa.",
@@ -103,6 +110,14 @@ export const ANIMALS = [
         id: 4,
         name: "African Penguin",
         image: "/animals/penguin.jpg",
+        images: [
+            '/animals/penguin-1.jpg',
+            '/animals/penguin-2.jpg',
+            '/animals/penguin-3.jpg',
+            '/animals/water-1.jpg',
+            '/animals/water-2.jpg',
+            '/animals/redPanda-5.jpg'
+        ],
         description: "The African penguin is a species of penguin found on the southwestern coast of Africa.",
         reason: "oil spills and overfishing",
         funFact: "they are also known as 'jackass penguins' because of their donkey-like bray.",
@@ -129,6 +144,14 @@ export const ANIMALS = [
         id: 5,
         name: "Argentine Angelshark",
         image: "/animals/shark.jpg",
+        images: [
+            '/animals/shark-1.jpg',
+            '/animals/shark-2.jpg',
+            '/animals/shark-3.jpg',
+            '/animals/water-1.jpg',
+            '/animals/water-2.jpg',
+            '/animals/redPanda-5.jpg'
+        ],
         description: "The Argentine angelshark is a species of angelshark found off the coast of Argentina.",
         reason: "bycatch and habitat degradation",
         funFact: "they can camouflage themselves on the ocean floor to ambush prey.",

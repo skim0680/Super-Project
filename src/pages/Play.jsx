@@ -31,7 +31,7 @@ export default function Play() {
 
     if (eligible.length === 0) {
       console.log('Eligible animals:', eligible);
-      setStartBlockedMessage('No eligible animals are available to play — either none have enough images or you have already collected them. Check your collection or add more animals.');
+      setStartBlockedMessage('All animals have been collected!');
       setSelectedAnimal(null);
       setGameStarted(false);
       setShowQuiz(false);

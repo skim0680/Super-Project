@@ -22,8 +22,8 @@ export default function Quiz({ animal }) {
 
   // Quiz paragraph with blanks to fill
   const quizContent = {
-    text: `The ${animal.name} is a fascinating animal. ${animal.description.split('.')[0]}. 
-           These amazing creatures are currently threatened by _REASON_, 
+    text: `${animal.description.split('.')[0]}. 
+           These creatures are currently threatened by _REASON_, 
            which is a serious concern for their survival. They are currently listed as _STATUS_. 
            Here's an interesting fact: _FACT_!`,
     blanks: {
